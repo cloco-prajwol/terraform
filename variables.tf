@@ -12,7 +12,7 @@ variable "environment_short_name" {
 }
 
 variable "project_name" {
-  default = "ec-orange-terraform"
+  default = "ec-orange-clc-terraform"
 }
 
 variable "web_fqdn" {
@@ -21,4 +21,18 @@ variable "web_fqdn" {
 
 variable "availability_zones" {
   default = "aps1-az1"
+}
+
+variable "public_ssh_key" {
+  description = "The SSH key pair"
+  type        = string
+  default     = ""
+}
+
+variable "ami" {
+  default = "ami-00bb6a80f01f03502"
+}
+
+variable "instance_type" {
+  default = "t2.micro"
 }

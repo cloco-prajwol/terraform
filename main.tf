@@ -32,6 +32,12 @@ module "private_subnet" {
   availability_zones = var.availability_zones
 }
 
-# module "bastion_server" {
-#   source = "./modules/bastion"
-# }
+module "bastion_server" {
+  source        = "./modules/bastion"
+  prefix        = local.prefix
+  vpc           = aws_vpc.main.id
+  ami           = var.ami
+  instance_type = var.instance_type
+  key_name      = var.public_ssh_key
+  pub_subnet    = module.public_subnet.subnet_ids[0]
+}
