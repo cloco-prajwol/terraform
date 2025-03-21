@@ -27,7 +27,7 @@ resource "aws_network_interface" "bastion_ni" {
 }
 
 
-resource "aws_instance" "ecorange-testing" {
+resource "aws_instance" "bastion" {
 
   ami           = var.ami
   instance_type = var.instance_type

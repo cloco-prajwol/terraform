@@ -41,3 +41,15 @@ module "bastion_server" {
   key_name      = var.public_ssh_key
   pub_subnet    = module.public_subnet.subnet_ids[0]
 }
+
+module "bastion_webserver" {
+  source        = "./modules/web_server"
+  prefix        = local.prefix
+  vpc           = aws_vpc.main.id
+  ami           = var.ami
+  instance_type = var.instance_type
+  key_name      = var.public_ssh_key
+  private_subnet    = module.private_subnet.subnet_ids[0]
+  bastion_sg_id = module.bastion_server.security_group[0]
+}
+
